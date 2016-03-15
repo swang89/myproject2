@@ -1,0 +1,32 @@
+---
+title: "Workshop 1 Assignment"
+author: "Steven Wang"
+date: "March 8, 2016"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Gapminder Data Analysis
+
+Gapminder is a great set of data for analyzing how GDP might affect the life expectancy of people in different countries and continents.  For example, in countries in Africa with extremely low GDPs the life expectancy is also extremely low.  In addition, certain events can cause a sudden decrease in life expectancy such as war or disease.  In fact, one of the biggest changes in life expectancy was the AIDS virus.  It would be useful to look at the change in life expectancies over the years to see the general trend.
+
+```{r}
+daply(.data=gapminder,.variables=c("country","year"),.fun=function(x) mean(x$lifeExp))
+```
+
+We can also look at the life expectancies in each continent.  
+
+```{r}
+daply(.data=gapminder,.variables=c("continent","year"),.fun=function(x) mean(x$lifeExp))
+```
+
+In Africa, the life expectancy change sharply decreased from 1982 and onwards which shows just how much factors such as war and disease can have on life expectancy.  We can plot this as well.  
+
+```{r, echo=FALSE}
+library(ggplot2)
+ggplot(data=gapminder,aes(x=year, y=lifeExp, color=continent)) + geom_point()
+```
+
