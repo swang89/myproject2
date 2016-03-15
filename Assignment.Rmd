@@ -26,7 +26,6 @@ daply(.data=gapminder,.variables=c("continent","year"),.fun=function(x) mean(x$l
 In Africa, the life expectancy change sharply decreased from 1982 and onwards which shows just how much factors such as war and disease can have on life expectancy.  We can plot this as well.  
 
 ```{r, echo=FALSE}
-library(ggplot2)
 ggplot(data=gapminder,aes(x=year, y=lifeExp, color=continent)) + geom_point()
 ```
 
